@@ -20,7 +20,7 @@ def predict(month, day, hour):
 
     model = Net()
     model = model.to(device)
-    model.load_state_dict(torch.load(MODEL_PATH))
+    model.load_state_dict(torch.load(MODEL_PATH, map_location='cpu'))
     model.eval()
 
     minute_log = np.ndarray((60, 2))
@@ -28,7 +28,7 @@ def predict(month, day, hour):
         for i in range(0, 60):
             input[-1] = i
             data = torch.from_numpy(input)
-            data = data.float().cuda().to(device)
+            data = data.float().to(device)
             prediction = model(data)
             minute_log[i] = prediction.cpu().numpy()
     minute_log[:, 0] += 47.6
@@ -40,12 +40,12 @@ def main():
     # input = [month, day, hour, minute]
     input = np.array([1, 10, 1, 0])
 
-    device = torch.device("cuda")
+    device = torch.device("cpu")
 
     model = Net()
 
     model = model.to(device)
-    model.load_state_dict(torch.load(MODEL_PATH))
+    model.load_state_dict(torch.load(MODEL_PATH, map_location='cpu'))
     model.eval()
 
     minute_log = np.ndarray((60,2))
@@ -53,7 +53,7 @@ def main():
         for i in range(0, 60):
             input[-1] = i
             data = torch.from_numpy(input)
-            data = data.float().cuda().to(device)
+            data = data.float().to(device)
             prediction = model(data)
             minute_log[i] = prediction.cpu().numpy()
     minute_log[:, 0] += 47.6
