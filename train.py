@@ -29,7 +29,7 @@ def main():
 
     dataset = SeattleCrime()
 
-    dataloader = torch.utils.data.DataLoader(dataset, batch_size=8,
+    dataloader = torch.utils.data.DataLoader(dataset, batch_size=64,
                                                         shuffle=True)
     device = torch.device("cuda")
 
@@ -38,7 +38,7 @@ def main():
     model = model.to(device)
 
 
-    optimizer_conv = optim.Adam(model.parameters(), lr=0.00001)
+    optimizer_conv = optim.Adam(model.parameters(), lr=0.00003)
 
     criterion = nn.MSELoss()
     epochs = 1
