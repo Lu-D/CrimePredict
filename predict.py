@@ -16,7 +16,7 @@ def full_history():
 
 def predict(month, day, hour):
     input = np.array([month, day, hour, 0])
-    device = torch.device("cuda")
+    device = torch.device("cpu")
 
     model = Net()
     model = model.to(device)
