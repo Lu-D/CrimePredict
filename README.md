@@ -67,7 +67,7 @@ We used google cloud's map widget at the core of our project. We created a jupyt
 
 
 <p align="center">
-    <img src="https://github.com/Lu-D/CrimePredict/raw/master/screenshot.png", width="960">
+    <img src="https://github.com/Lu-D/CrimePredict/raw/master/screenshot2.png", width="960">
     <br>
     <sup>Our Website</sup>
 </p>
